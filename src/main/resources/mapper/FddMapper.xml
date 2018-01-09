@@ -18,8 +18,9 @@
           SELECT USERID,SENDREASON,CONTEXT,SENDTIME
           FROM XXD_MESSAGE_SITE_SENDLOGS
           WHERE SENDREASON = #{sendReason,jdbcType=VARCHAR}
+          ORDER BY SENDTIME DESC
       ) t
-      WHERE ROWNUM &lt; 4
+      WHERE ROWNUM &lt; 6
     </select>
 
 </mapper>
