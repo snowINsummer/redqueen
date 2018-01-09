@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="redqueen.mapper.CreditorTransfer.CreditorTransferMapper">
+    <resultMap id="BaseResultMap" type="redqueen.entity.CreditorTransfer.BorrowTenderTransferable">
+        <result column="TENDERID" property="tenderId" jdbcType="VARCHAR"/>
+        <result column="BORROWID" property="borrowId" jdbcType="VARCHAR"/>
+        <result column="SCHEMEID" property="schemeId" jdbcType="VARCHAR"/>
+        <result column="CURUSERID" property="curuserId" jdbcType="DECIMAL"/>
+        <result column="MOBILE" property="curuserMobile" jdbcType="VARCHAR"/>
+        <result column="EFFECTIVEMONEY" property="effectiveMoney" jdbcType="DECIMAL"/>
+        <result column="ISOPTIMIZE" property="isOptimize" jdbcType="CHAR"/>
+        <result column="STATUS" property="status" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID, USERNAME, PASSWORD
+    </sql>
+
+    <select id="getCreditorRights" resultMap="BaseResultMap">
+      SELECT * FROM
+      (
+        SELECT xbt.TENDERID,xbt.BORROWID,xbt.SCHEMEID,xbt.CURUSERID,xu.MOBILE,xbt.EFFECTIVEMONEY,xbt.ISOPTIMIZE,xbt.STATUS FROM XXD_BORROW_TENDER xbt
+        LEFT JOIN XXD_USER xu
+          ON xu.USERID = xbt.CURUSERID
+          WHERE xbt.STATUS = 1
+          AND xbt.ISOPTIMIZE = #{isOptimize,jdbcType=CHAR}
+            <if test="mobile != null and mobile != ''">
+                AND xu.MOBILE = #{mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="schemeId != null and schemeId != ''">
+                AND xbt.SCHEMEID = #{schemeId,jdbcType=VARCHAR}
+            </if>
+      ) t
+      WHERE ROWNUM &lt; 31
+    </select>
+
+</mapper>

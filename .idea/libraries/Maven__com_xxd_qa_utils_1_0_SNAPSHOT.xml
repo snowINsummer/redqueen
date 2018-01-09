@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.xxd.qa:utils:1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/xxd/qa/utils/1.0-SNAPSHOT/utils-1.0-20171124.074948-46.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/xxd/qa/utils/1.0-SNAPSHOT/utils-1.0-20171124.074948-46-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/xxd/qa/utils/1.0-SNAPSHOT/utils-1.0-20171124.074948-46-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

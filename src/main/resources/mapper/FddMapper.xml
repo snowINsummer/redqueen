@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="redqueen.mapper.fdd.FddMapper">
+    <resultMap id="BaseResultMap" type="redqueen.entity.fdd.SignatoryMessage">
+        <result column="USERID" property="userId" jdbcType="DECIMAL"/>
+        <result column="SENDREASON" property="sendReason" jdbcType="VARCHAR"/>
+        <result column="CONTEXT" property="context" jdbcType="VARCHAR"/>
+        <result column="SENDTIME" property="sendTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID, USERNAME, PASSWORD
+    </sql>
+
+    <select id="getSignatoryMessage" resultMap="BaseResultMap">
+      SELECT * FROM
+      (
+          SELECT USERID,SENDREASON,CONTEXT,SENDTIME
+          FROM XXD_MESSAGE_SITE_SENDLOGS
+          WHERE SENDREASON = #{sendReason,jdbcType=VARCHAR}
+      ) t
+      WHERE ROWNUM &lt; 4
+    </select>
+
+</mapper>
