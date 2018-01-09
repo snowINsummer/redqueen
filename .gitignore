@@ -3,6 +3,7 @@
 .gitignore.swp
 #过滤文件夹  
 .idea/
+.idea/**/*.xml
 .idea/*.xml
 logs/
 logs/*.log
