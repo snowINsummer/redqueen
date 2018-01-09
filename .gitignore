@@ -1,5 +1,6 @@
 #过滤文件  
 *.iml
+.gitignore.swp
 #过滤文件夹  
 .idea/
 .idea/*.xml
