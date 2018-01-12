@@ -22,7 +22,7 @@ public class CreditorTransferController {
 
     @TargetDataSource("stage")
     @RequestMapping(value = "/stage/getCreditorRights", method = RequestMethod.POST)
-    public RspData getCreditorRights(@RequestBody ReqData reqData){
+    public RspData getCreditorRightsStage(@RequestBody ReqData reqData){
         RspData rspData = new RspData();
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
@@ -34,7 +34,22 @@ public class CreditorTransferController {
             e.printStackTrace();
         }
         return rspData;
+    }
 
+    @TargetDataSource("test")
+    @RequestMapping(value = "/test/getCreditorRights", method = RequestMethod.POST)
+    public RspData getCreditorRightsTest(@RequestBody ReqData reqData){
+        RspData rspData = new RspData();
+        try {
+            String json = JSONFormat.getObjectToJson(reqData.getData());
+            BorrowTender borrowTender = JSONFormat.fromJson(json, BorrowTender.class);
+            rspData.setData(creditorTransferService.getCreditorRights(borrowTender));
+            rspData.setCode(Constants.CODE_SUCCESS);
+        }catch (Exception e){
+            rspData.setData(e.getMessage());
+            e.printStackTrace();
+        }
+        return rspData;
     }
 
 
