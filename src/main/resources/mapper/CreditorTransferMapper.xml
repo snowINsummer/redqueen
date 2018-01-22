@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="redqueen.mapper.CreditorTransfer.CreditorTransferMapper">
-    <resultMap id="BaseResultMap" type="redqueen.entity.CreditorTransfer.BorrowTenderTransferable">
+    <resultMap id="CreditorRightsResultMap" type="redqueen.entity.CreditorTransfer.BorrowTenderTransferable">
         <result column="TENDERID" property="tenderId" jdbcType="VARCHAR"/>
         <result column="BORROWID" property="borrowId" jdbcType="VARCHAR"/>
         <result column="SCHEMEID" property="schemeId" jdbcType="VARCHAR"/>
@@ -11,12 +11,20 @@
         <result column="ISOPTIMIZE" property="isOptimize" jdbcType="CHAR"/>
         <result column="STATUS" property="status" jdbcType="DECIMAL"/>
     </resultMap>
-
+    <resultMap id="TradeRequestResultMap" type="redqueen.entity.CreditorTransfer.TradeRequestVo">
+        <result column="REQUESTID" property="requestId" jdbcType="VARCHAR"/>
+        <result column="TENDERID" property="tenderId" jdbcType="VARCHAR"/>
+        <result column="USERID" property="salerUserId" jdbcType="DECIMAL"/>
+        <result column="MOBILE" property="salerMobile" jdbcType="VARCHAR"/>
+        <result column="ADDTIME" property="addTime" jdbcType="DATE"/>
+        <result column="STATUS" property="status" jdbcType="DECIMAL"/>
+        <result column="AMOUNT" property="amount" jdbcType="DECIMAL"/>
+    </resultMap>
     <sql id="Base_Column_List">
         ID, USERNAME, PASSWORD
     </sql>
 
-    <select id="getCreditorRights" resultMap="BaseResultMap">
+    <select id="queryCreditorRights" resultMap="CreditorRightsResultMap">
       SELECT * FROM
       (
         SELECT xbt.TENDERID,xbt.BORROWID,xbt.SCHEMEID,xbt.CURUSERID,xu.MOBILE,xbt.EFFECTIVEMONEY,xbt.ISOPTIMIZE,xbt.STATUS FROM XXD_BORROW_TENDER xbt
@@ -34,4 +42,11 @@
       WHERE ROWNUM &lt; 31
     </select>
 
+    <select id="queryTradeRequest" resultMap="TradeRequestResultMap">
+        SELECT xtr.REQUESTID,xtr.TENDERID,xtr.USERID,xu.MOBILE,xtr.ADDTIME,xtr.STATUS,AMOUNT from XXD_TRADE_REQUEST xtr
+        LEFT JOIN XXD_USER xu
+        ON xtr.USERID = xu.USERID
+        WHERE TENDERID = #{tenderId,jdbcType=VARCHAR}
+        ORDER BY ADDTIME DESC
+    </select>
 </mapper>
