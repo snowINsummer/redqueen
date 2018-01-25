@@ -2,10 +2,19 @@ package redqueen.entity.fdd;
 
 public class SignatoryMessage {
 
+    private Long rowNum;
     private Long userId;
     private String sendReason;
     private String context;
     private String sendTime;
+
+    public Long getRowNum() {
+        return rowNum;
+    }
+
+    public void setRowNum(Long rowNum) {
+        this.rowNum = rowNum;
+    }
 
     public Long getUserId() {
         return userId;

@@ -2,12 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="redqueen.mapper.fdd.FddMapper">
     <resultMap id="BaseResultMap" type="redqueen.entity.fdd.SignatoryMessage">
+        <result column="ROWNUM" property="rowNum" jdbcType="DECIMAL"/>
         <result column="USERID" property="userId" jdbcType="DECIMAL"/>
         <result column="SENDREASON" property="sendReason" jdbcType="VARCHAR"/>
         <result column="CONTEXT" property="context" jdbcType="VARCHAR"/>
         <result column="SENDTIME" property="sendTime" jdbcType="TIMESTAMP"/>
     </resultMap>
-
+    <resultMap id="RcBorrowGuarantorVo" type="redqueen.entity.fdd.RcBorrowGuarantorVo">
+        <result column="GUARNAME" property="guarName" jdbcType="VARCHAR"/>
+        <result column="IDCARDNO" property="idCardNo" jdbcType="VARCHAR"/>
+        <result column="ADDRESS" property="address" jdbcType="VARCHAR"/>
+        <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR"/>
+        <result column="MOBILE" property="mobile" jdbcType="VARCHAR"/>
+        <result column="BANKNAME" property="bankName" jdbcType="VARCHAR"/>
+        <result column="BANKACCOUNT" property="bankAccount" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="DECIMAL"/>
+    </resultMap>
     <sql id="Base_Column_List">
         ID, USERNAME, PASSWORD
     </sql>
@@ -15,12 +25,19 @@
     <select id="getSignatoryMessage" resultMap="BaseResultMap">
       SELECT * FROM
       (
-          SELECT USERID,SENDREASON,CONTEXT,SENDTIME
+          SELECT ROWNUM,USERID,SENDREASON,CONTEXT,SENDTIME
           FROM XXD_MESSAGE_SITE_SENDLOGS
           WHERE SENDREASON = #{sendReason,jdbcType=VARCHAR}
           ORDER BY SENDTIME DESC
       ) t
       WHERE ROWNUM &lt; 6
     </select>
+
+    <select id="queryBorrowGuarantor" resultMap="RcBorrowGuarantorVo">
+        SELECT GUARNAME,IDCARDNO,ADDRESS,TELEPHONE,MOBILE,BANKNAME,BANKACCOUNT,STATUS
+        FROM RC_BORROW_GUARANTOR
+        WHERE BORROWID = #{borrowId,jdbcType=VARCHAR}
+    </select>
+
 
 </mapper>

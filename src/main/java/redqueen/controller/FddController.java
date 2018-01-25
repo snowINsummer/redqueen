@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import qa.utils.JSONFormat;
 import redqueen.body.fdd.FddMessage;
+import redqueen.body.fdd.RcBorrowGuarantor;
 import redqueen.common.configuration.TargetDataSource;
 import redqueen.common.constants.Constants;
 import redqueen.common.entity.ReqData;
@@ -37,4 +38,20 @@ public class FddController {
 
     }
 
+    @TargetDataSource("stage")
+    @RequestMapping(value = "/stage/queryBorrowGuarantor", method = RequestMethod.POST)
+    public RspData queryBorrowGuarantor(@RequestBody ReqData reqData){
+        RspData rspData = new RspData();
+        try {
+            String json = JSONFormat.getObjectToJson(reqData.getData());
+            RcBorrowGuarantor rcBorrowGuarantor = JSONFormat.fromJson(json, RcBorrowGuarantor.class);
+            rspData.setData(fddService.queryBorrowGuarantor(rcBorrowGuarantor));
+            rspData.setCode(Constants.CODE_SUCCESS);
+        }catch (Exception e){
+            rspData.setData(e.getMessage());
+            e.printStackTrace();
+        }
+        return rspData;
+
+    }
 }

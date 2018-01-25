@@ -3,6 +3,7 @@ package redqueen.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redqueen.body.fdd.FddMessage;
+import redqueen.body.fdd.RcBorrowGuarantor;
 import redqueen.mapper.fdd.FddMapper;
 import redqueen.service.FddService;
 
@@ -16,6 +17,11 @@ public class FddServiceImpl implements FddService {
     public Object getSignatoryMessage(FddMessage fddMessage) {
         String sendReason = "SMS" + fddMessage.getMobile();
         return fddMapper.getSignatoryMessage(sendReason);
+    }
+
+    @Override
+    public Object queryBorrowGuarantor(RcBorrowGuarantor rcBorrowGuarantor) {
+        return fddMapper.queryBorrowGuarantor(rcBorrowGuarantor.getBorrowId());
     }
 
 
