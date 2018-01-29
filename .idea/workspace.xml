@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="febb216c-9515-46d9-8bed-bd4922e3d9ce" name="Default" comment="增加/stage/queryBorrowGuarantor 接口&#10;增加/stage/getSignatoryMessage ROWNUM字段">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/redqueen/body/fdd/CorporatorMobile.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/redqueen/entity/fdd/CorporatorMobileVo.java" />
+    <list default="true" id="febb216c-9515-46d9-8bed-bd4922e3d9ce" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/redqueen/controller/FddController.java" afterPath="$PROJECT_DIR$/src/main/java/redqueen/controller/FddController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/redqueen/mapper/fdd/FddMapper.java" afterPath="$PROJECT_DIR$/src/main/java/redqueen/mapper/fdd/FddMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/redqueen/service/FddService.java" afterPath="$PROJECT_DIR$/src/main/java/redqueen/service/FddService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/redqueen/service/impl/FddServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/redqueen/service/impl/FddServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/redqueen/entity/fdd/RcBorrowGuarantorVo.java" afterPath="$PROJECT_DIR$/src/main/java/redqueen/entity/fdd/RcBorrowGuarantorVo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/FddMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/FddMapper.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -51,56 +46,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/226abeb6-c01e-477c-addb-16f56e532b1e/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="139" column="43" lean-forward="false" selection-start-line="139" selection-start-column="43" selection-end-line="139" selection-end-column="43" />
+            <state relative-caret-position="116">
+              <caret line="42" column="51" lean-forward="false" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CorporatorMobileVo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/redqueen/entity/fdd/CorporatorMobileVo.java">
+      <file leaf-file-name="FddMapper.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/FddMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+            <state relative-caret-position="168">
+              <caret line="47" column="65" lean-forward="false" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
               <folding>
-                <element signature="e#233#234#0" expanded="true" />
-                <element signature="e#270#271#0" expanded="true" />
-                <element signature="e#330#331#0" expanded="true" />
-                <element signature="e#382#383#0" expanded="true" />
-                <element signature="e#425#426#0" expanded="true" />
-                <element signature="e#464#465#0" expanded="true" />
-                <element signature="e#528#529#0" expanded="true" />
-                <element signature="e#584#585#0" expanded="true" />
-                <element signature="e#615#616#0" expanded="true" />
-                <element signature="e#644#645#0" expanded="true" />
-                <element signature="e#686#687#0" expanded="true" />
-                <element signature="e#722#723#0" expanded="true" />
-                <element signature="e#760#761#0" expanded="true" />
-                <element signature="e#794#795#0" expanded="true" />
-                <element signature="e#848#849#0" expanded="true" />
-                <element signature="e#894#895#0" expanded="true" />
+                <element signature="e#2326#2330#0" expanded="true" />
+                <marker date="1517221444321" expanded="true" signature="2023:2331" ph="SELECT * FRO... USERID" />
+                <marker date="1517221444321" expanded="true" signature="2023:2332" ph="SELECT * FRO... USERID" />
+                <marker date="1517221444321" expanded="true" signature="2055:2263" ph="SELECT USERI... XXD_MESSAGE_SITE_SENDLOGS" />
+                <marker date="1517221444321" expanded="true" signature="2055:2296" ph="SELECT USERI... XXD_MESSAGE_SITE_SENDLOGS" />
+                <marker date="1517221444321" expanded="true" signature="2427:2724" ph="SELECT GUARN... RC_BORROW_GUARANTOR" />
+                <marker date="1517221444321" expanded="true" signature="2585:2698" ph="SELECT GUARN... RC_BORROW_GUARANTOR" />
+                <marker date="1517221444321" expanded="true" signature="2819:3085" ph="SELECT xuc.C... xxd_user_company" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FddMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/FddMapper.xml">
+      <file leaf-file-name="RcBorrowGuarantorVo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/redqueen/entity/fdd/RcBorrowGuarantorVo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="47" column="16" lean-forward="true" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
+            <state relative-caret-position="305">
+              <caret line="78" column="34" lean-forward="false" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
               <folding>
-                <element signature="e#2192#2196#0" expanded="true" />
-                <marker date="1516955097273" expanded="true" signature="1948:2197" ph="SELECT * FRO... USERID" />
-                <marker date="1516955097273" expanded="true" signature="1948:2198" ph="SELECT * FRO... USERID" />
-                <marker date="1516955097273" expanded="true" signature="1980:2129" ph="SELECT USERI... XXD_MESSAGE_SITE_SENDLOGS" />
-                <marker date="1516955097273" expanded="true" signature="1980:2162" ph="SELECT USERI... XXD_MESSAGE_SITE_SENDLOGS" />
-                <marker date="1516955097273" expanded="true" signature="2293:2457" ph="SELECT GUARN... RC_BORROW_GUARANTOR" />
-                <marker date="1516955097273" expanded="true" signature="2552:2818" ph="SELECT xuc.C... xxd_user_company" />
+                <element signature="e#1621#1622#0" expanded="true" />
+                <element signature="e#1670#1671#0" expanded="true" />
+                <element signature="e#1710#1711#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -232,15 +215,15 @@
         <option value="$PROJECT_DIR$/src/main/java/redqueen/body/fdd/RcBorrowGuarantor.java" />
         <option value="$PROJECT_DIR$/src/main/java/redqueen/entity/fdd/SignatoryMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/redqueen/mapper/CreditorTransfer/CreditorTransferMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/redqueen/entity/fdd/RcBorrowGuarantorVo.java" />
         <option value="$PROJECT_DIR$/src/main/java/redqueen/mapper/fdd/FddMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/FddMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/redqueen/entity/fdd/CorporatorMobileVo.java" />
         <option value="$PROJECT_DIR$/src/main/java/redqueen/body/fdd/CorporatorMobile.java" />
         <option value="$PROJECT_DIR$/src/main/java/redqueen/controller/FddController.java" />
         <option value="$PROJECT_DIR$/src/main/java/redqueen/service/FddService.java" />
         <option value="$PROJECT_DIR$/src/main/java/redqueen/service/impl/FddServiceImpl.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/226abeb6-c01e-477c-addb-16f56e532b1e/console.sql" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/FddMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/redqueen/entity/fdd/RcBorrowGuarantorVo.java" />
       </list>
     </option>
   </component>
@@ -600,7 +583,7 @@
       <workItem from="1515151515294" duration="15304000" />
       <workItem from="1516077622120" duration="69000" />
       <workItem from="1516612339460" duration="300000" />
-      <workItem from="1516688155504" duration="16026000" />
+      <workItem from="1516688155504" duration="17584000" />
     </task>
     <task id="LOCAL-00001" summary="增加项目名">
       <created>1515479834526</created>
@@ -644,15 +627,21 @@
       <option name="project" value="LOCAL" />
       <updated>1516861008111</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="增加/stage/queryCorporatorMobile 接口">
+      <created>1517208874880</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1517208874880</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53183000" />
+    <option name="totallyTimeSpent" value="54741000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -670,12 +659,12 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Mybatis datasource" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38789546" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38789546" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2463651" sideWeight="0.4772118" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2463651" sideWeight="0.5227882" order="5" side_tool="true" content_ui="tabs" />
@@ -701,7 +690,8 @@
     <MESSAGE value="增加/test/getCreditorRights 接口" />
     <MESSAGE value="增加queryTradeRequest 接口" />
     <MESSAGE value="增加/stage/queryBorrowGuarantor 接口&#10;增加/stage/getSignatoryMessage ROWNUM字段" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加/stage/queryBorrowGuarantor 接口&#10;增加/stage/getSignatoryMessage ROWNUM字段" />
+    <MESSAGE value="增加/stage/queryCorporatorMobile 接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加/stage/queryCorporatorMobile 接口" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1027,14 +1017,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/redqueen/entity/fdd/RcBorrowGuarantorVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="26" lean-forward="false" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/redqueen/body/fdd/RcBorrowGuarantor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -1077,14 +1059,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/redqueen/body/fdd/CorporatorMobile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="29" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://src:table:/19a72bb7/226abeb6-c01e-477c-addb-16f56e532b1e/XXD_STAGE.XXD_USER_COMPANY">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-264">
@@ -1101,18 +1075,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://src:table:/19a72bb7/226abeb6-c01e-477c-addb-16f56e532b1e/XXD_STAGE.RC_BORROW_GUARANTOR">
+    <entry file="das://src:table:/19a72bb7/226abeb6-c01e-477c-addb-16f56e532b1e/XXD_STAGE.XXD_BORROW">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="46" column="44" lean-forward="false" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="44" />
+        <state relative-caret-position="-1811">
+          <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/redqueen/body/fdd/CorporatorMobile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="29" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/redqueen/entity/fdd/CorporatorMobileVo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+        <state relative-caret-position="348">
+          <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
           <folding>
             <element signature="e#233#234#0" expanded="true" />
             <element signature="e#270#271#0" expanded="true" />
@@ -1134,35 +1116,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/FddMapper.xml">
+    <entry file="das://src:table:/19a72bb7/226abeb6-c01e-477c-addb-16f56e532b1e/XXD_STAGE.RC_BORROW_GUARANTOR">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="47" column="16" lean-forward="true" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
-          <folding>
-            <element signature="e#2192#2196#0" expanded="true" />
-            <marker date="1516955097273" expanded="true" signature="1948:2197" ph="SELECT * FRO... USERID" />
-            <marker date="1516955097273" expanded="true" signature="1948:2198" ph="SELECT * FRO... USERID" />
-            <marker date="1516955097273" expanded="true" signature="1980:2129" ph="SELECT USERI... XXD_MESSAGE_SITE_SENDLOGS" />
-            <marker date="1516955097273" expanded="true" signature="1980:2162" ph="SELECT USERI... XXD_MESSAGE_SITE_SENDLOGS" />
-            <marker date="1516955097273" expanded="true" signature="2293:2457" ph="SELECT GUARN... RC_BORROW_GUARANTOR" />
-            <marker date="1516955097273" expanded="true" signature="2552:2818" ph="SELECT xuc.C... xxd_user_company" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://src:table:/19a72bb7/226abeb6-c01e-477c-addb-16f56e532b1e/XXD_STAGE.XXD_BORROW">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1811">
+        <state relative-caret-position="-267">
           <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/redqueen/entity/fdd/RcBorrowGuarantorVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="78" column="34" lean-forward="false" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
+          <folding>
+            <element signature="e#1621#1622#0" expanded="true" />
+            <element signature="e#1670#1671#0" expanded="true" />
+            <element signature="e#1710#1711#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/226abeb6-c01e-477c-addb-16f56e532b1e/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="139" column="43" lean-forward="false" selection-start-line="139" selection-start-column="43" selection-end-line="139" selection-end-column="43" />
+        <state relative-caret-position="116">
+          <caret line="42" column="51" lean-forward="false" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="51" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/FddMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="47" column="65" lean-forward="false" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
+          <folding>
+            <element signature="e#2326#2330#0" expanded="true" />
+            <marker date="1517221444321" expanded="true" signature="2023:2331" ph="SELECT * FRO... USERID" />
+            <marker date="1517221444321" expanded="true" signature="2023:2332" ph="SELECT * FRO... USERID" />
+            <marker date="1517221444321" expanded="true" signature="2055:2263" ph="SELECT USERI... XXD_MESSAGE_SITE_SENDLOGS" />
+            <marker date="1517221444321" expanded="true" signature="2055:2296" ph="SELECT USERI... XXD_MESSAGE_SITE_SENDLOGS" />
+            <marker date="1517221444321" expanded="true" signature="2427:2724" ph="SELECT GUARN... RC_BORROW_GUARANTOR" />
+            <marker date="1517221444321" expanded="true" signature="2585:2698" ph="SELECT GUARN... RC_BORROW_GUARANTOR" />
+            <marker date="1517221444321" expanded="true" signature="2819:3085" ph="SELECT xuc.C... xxd_user_company" />
+          </folding>
         </state>
       </provider>
     </entry>

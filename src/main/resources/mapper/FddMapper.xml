@@ -17,6 +17,7 @@
         <result column="BANKNAME" property="bankName" jdbcType="VARCHAR"/>
         <result column="BANKACCOUNT" property="bankAccount" jdbcType="VARCHAR"/>
         <result column="STATUS" property="status" jdbcType="DECIMAL"/>
+        <result column="PRIORITY" property="priority" jdbcType="DECIMAL"/>
     </resultMap>
     <resultMap id="CorporatorMobileVo" type="redqueen.entity.fdd.CorporatorMobileVo">
         <result column="COMREPNAME" property="corporatorName" jdbcType="VARCHAR"/>
@@ -31,7 +32,12 @@
     <select id="getSignatoryMessage" resultMap="BaseResultMap">
       SELECT * FROM
       (
-          SELECT ROWNUM,USERID,SENDREASON,CONTEXT,SENDTIME
+          SELECT
+           ROWNUM,
+           USERID,
+           SENDREASON,
+           CONTEXT,
+           SENDTIME
           FROM XXD_MESSAGE_SITE_SENDLOGS
           WHERE SENDREASON = #{sendReason,jdbcType=VARCHAR}
           ORDER BY SENDTIME DESC
@@ -40,9 +46,19 @@
     </select>
 
     <select id="queryBorrowGuarantor" resultMap="RcBorrowGuarantorVo">
-        SELECT GUARNAME,IDCARDNO,ADDRESS,TELEPHONE,MOBILE,BANKNAME,BANKACCOUNT,STATUS
+        SELECT
+          GUARNAME,
+          IDCARDNO,
+          ADDRESS,
+          TELEPHONE,
+          MOBILE,
+          BANKNAME,
+          BANKACCOUNT,
+          STATUS,
+          PRIORITY
         FROM RC_BORROW_GUARANTOR
         WHERE BORROWID = #{borrowId,jdbcType=VARCHAR}
+        ORDER BY PRIORITY
     </select>
 
     <select id="queryCorporatorMobile" resultMap="CorporatorMobileVo">

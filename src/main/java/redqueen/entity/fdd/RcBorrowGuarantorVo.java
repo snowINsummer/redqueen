@@ -10,6 +10,7 @@ public class RcBorrowGuarantorVo {
     private String bankName;
     private String bankAccount;
     private Integer status;
+    private Integer priority;
 
     public String getGuarName() {
         return guarName;
@@ -73,5 +74,13 @@ public class RcBorrowGuarantorVo {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
     }
 }
