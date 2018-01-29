@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import qa.utils.JSONFormat;
+import redqueen.body.fdd.CorporatorMobile;
 import redqueen.body.fdd.FddMessage;
 import redqueen.body.fdd.RcBorrowGuarantor;
 import redqueen.common.configuration.TargetDataSource;
@@ -35,7 +36,6 @@ public class FddController {
             e.printStackTrace();
         }
         return rspData;
-
     }
 
     @TargetDataSource("stage")
@@ -52,6 +52,21 @@ public class FddController {
             e.printStackTrace();
         }
         return rspData;
+    }
 
+    @TargetDataSource("stage")
+    @RequestMapping(value = "/stage/queryCorporatorMobile", method = RequestMethod.POST)
+    public RspData queryCorporatorMobile(@RequestBody ReqData reqData){
+        RspData rspData = new RspData();
+        try {
+            String json = JSONFormat.getObjectToJson(reqData.getData());
+            CorporatorMobile corporatorMobile = JSONFormat.fromJson(json, CorporatorMobile.class);
+            rspData.setData(fddService.queryCorporatorMobile(corporatorMobile));
+            rspData.setCode(Constants.CODE_SUCCESS);
+        }catch (Exception e){
+            rspData.setData(e.getMessage());
+            e.printStackTrace();
+        }
+        return rspData;
     }
 }

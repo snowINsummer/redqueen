@@ -18,6 +18,12 @@
         <result column="BANKACCOUNT" property="bankAccount" jdbcType="VARCHAR"/>
         <result column="STATUS" property="status" jdbcType="DECIMAL"/>
     </resultMap>
+    <resultMap id="CorporatorMobileVo" type="redqueen.entity.fdd.CorporatorMobileVo">
+        <result column="COMREPNAME" property="corporatorName" jdbcType="VARCHAR"/>
+        <result column="COMREPMOBILENO" property="corporatorMobile" jdbcType="VARCHAR"/>
+        <result column="COMREPSTATUS" property="status" jdbcType="DECIMAL"/>
+        <result column="COMPANYNAME" property="companyName" jdbcType="VARCHAR"/>
+    </resultMap>
     <sql id="Base_Column_List">
         ID, USERNAME, PASSWORD
     </sql>
@@ -39,5 +45,15 @@
         WHERE BORROWID = #{borrowId,jdbcType=VARCHAR}
     </select>
 
+    <select id="queryCorporatorMobile" resultMap="CorporatorMobileVo">
+        SELECT
+          xuc.COMREPNAME,
+          xuc.COMREPMOBILENO,
+          xuc.COMREPSTATUS,
+          xuc.COMPANYNAME
+        FROM xxd_user_company xuc
+          LEFT JOIN xxd_borrow xb ON xb.COMPANYID = xuc.ID
+        WHERE xb.borrowid = #{borrowId,jdbcType=VARCHAR}
+    </select>
 
 </mapper>
