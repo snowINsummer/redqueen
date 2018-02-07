@@ -25,6 +25,22 @@
         <result column="COMREPSTATUS" property="status" jdbcType="DECIMAL"/>
         <result column="COMPANYNAME" property="companyName" jdbcType="VARCHAR"/>
     </resultMap>
+    <resultMap id="CreditorRightsResultMap" type="redqueen.entity.CreditorTransfer.BorrowTenderTransferable">
+        <result column="TENDERID" property="tenderId" jdbcType="VARCHAR"/>
+        <result column="BORROWID" property="borrowId" jdbcType="VARCHAR"/>
+        <result column="SCHEMEID" property="schemeId" jdbcType="VARCHAR"/>
+        <result column="CURUSERID" property="curuserId" jdbcType="DECIMAL"/>
+        <result column="MOBILE" property="curuserMobile" jdbcType="VARCHAR"/>
+        <result column="EFFECTIVEMONEY" property="effectiveMoney" jdbcType="DECIMAL"/>
+        <result column="ISOPTIMIZE" property="isOptimize" jdbcType="CHAR"/>
+        <result column="STATUS" property="status" jdbcType="DECIMAL"/>
+    </resultMap>
+    <resultMap id="SchemeInfoBo" type="redqueen.entity.fdd.SchemeInfoBo">
+        <result column="JOINID" property="joinId" jdbcType="VARCHAR"/>
+        <result column="JOINDATE" property="joinDate" jdbcType="TIMESTAMP"/>
+        <result column="SCHEMEID" property="schemeId" jdbcType="VARCHAR"/>
+        <result column="SCHEMENAME" property="schemeName" jdbcType="VARCHAR"/>
+    </resultMap>
     <sql id="Base_Column_List">
         ID, USERNAME, PASSWORD
     </sql>
@@ -68,8 +84,59 @@
           xuc.COMREPSTATUS,
           xuc.COMPANYNAME
         FROM xxd_user_company xuc
-          LEFT JOIN xxd_borrow xb ON xb.COMPANYID = xuc.ID
+        LEFT JOIN xxd_borrow xb
+          ON xb.COMPANYID = xuc.ID
         WHERE xb.borrowid = #{borrowId,jdbcType=VARCHAR}
     </select>
 
+    <select id="queryBorrowTenderBo" resultMap="CreditorRightsResultMap">
+        SELECT xbt.TENDERID,
+            xbt.BORROWID,
+            xbt.SCHEMEID,
+            xbt.CURUSERID,
+            xu.MOBILE,
+            xbt.EFFECTIVEMONEY,
+            xbt.ISOPTIMIZE,
+            xbt.STATUS
+        FROM XXD_BORROW_TENDER xbt
+        LEFT JOIN XXD_USER xu
+          ON xu.USERID = xbt.CURUSERID
+        WHERE xbt.BORROWID = #{borrowId,jdbcType=CHAR}
+    </select>
+
+    <select id="querySchemeInfo" resultMap="SchemeInfoBo">
+            <if test="schemeType == 1">
+                SELECT xou.USERSCHEMEID JOINID,
+                    xou.ADDTIME JOINDATE,
+                    xos.SCHEMEID,
+                    xos.PNAME SCHEMENAME
+                FROM XXD_OPTIMIZE_USERSCHEME xou
+                LEFT JOIN XXD_OPTIMIZE_SCHEME xos
+                ON xou.SCHEMEID = xos.SCHEMEID
+                WHERE xou.SCHEMEID = #{schemeId,jdbcType=VARCHAR}
+                <if test="userId != null and userId != ''">
+                    AND xou.USERID = #{userId,jdbcType=DECIMAL}
+                </if>
+            </if>
+            <if test="schemeType == 2">
+                SELECT xsj.STEPJOINID JOINID,
+                xsj.ADDTIME JOINDATE,
+                xs.STEPID SCHEMEID,
+                xs.SNAME SCHEMENAME
+                FROM XXD_STEP_JOIN xsj
+                LEFT JOIN XXD_STEP xs
+                ON xsj.STEPID = xs.STEPID
+                WHERE xsj.STEPJOINID = #{schemeId,jdbcType=VARCHAR}
+            </if>
+            <if test="schemeType == 3 or schemeType == 4 or schemeType == 5 or schemeType == 6">
+                SELECT xrj.JOINID,
+                xrj.ADDTIME JOINDATE,
+                xr.ID SCHEMEID,
+                xr.NAME SCHEMENAME
+                FROM XXD_REGLINTST_JOIN xrj
+                LEFT JOIN XXD_REGLINTST xr
+                ON xrj.PID = xr.ID
+                WHERE xrj.JOINID = #{schemeId,jdbcType=VARCHAR}
+            </if>
+    </select>
 </mapper>
