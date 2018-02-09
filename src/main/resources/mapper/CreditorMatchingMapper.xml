@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="redqueen.mapper.CreditorTransfer.CreditorMatchingMapper">
+    <resultMap id="TradePackVo" type="redqueen.entity.CreditorTransfer.TradePackVo">
+        <result column="PACKID" property="packId" jdbcType="VARCHAR"/>
+        <result column="REQUESTID" property="requestId" jdbcType="VARCHAR"/>
+        <result column="ADDTIME" property="addTime" jdbcType="DATE"/>
+        <result column="BUYERUSERID" property="buyerUserId" jdbcType="DECIMAL"/>
+        <result column="CURUSERID" property="curuserId" jdbcType="DECIMAL"/>
+        <result column="TENDERID" property="tenderId" jdbcType="VARCHAR"/>
+        <result column="BORROWID" property="borrowId" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="queryTradePack" resultMap="TradePackVo">
+        SELECT
+          xtp.PACKID,
+          xtp.REQUESTID,
+          xtp.ADDTIME,
+          xtp.USERID BUYERUSERID,
+          xbt.CURUSERID,
+          xbt.TENDERID,
+          xbt.BORROWID
+        FROM XXD_TRADE_PACK xtp
+          LEFT JOIN XXD_TRADE_REQUEST xtr
+          ON xtp.REQUESTID = xtr.REQUESTID
+          LEFT JOIN XXD_BORROW_TENDER xbt
+            ON xtr.TENDERID = xbt.TENDERID
+        WHERE xtp.REQUESTID = #{requestId,jdbcType=VARCHAR}
+    </select>
+</mapper>
