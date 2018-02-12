@@ -22,4 +22,9 @@ public class CreditorMatchingServiceImpl implements CreditorMatchingService {
     public Object queryTradeRequest(TradeRequest tradeRequest) {
         return creditorMatchingMapper.queryTradeRequest(tradeRequest.getTenderId());
     }
+
+    @Override
+    public Object queryAccountLog(TradePack tradePack) {
+        return creditorMatchingMapper.queryAccountLog(tradePack.getRequestId());
+    }
 }

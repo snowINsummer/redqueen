@@ -7,4 +7,6 @@ public interface CreditorMatchingService {
     Object queryTradePack(TradePack tradePack);
 
     Object queryTradeRequest(TradeRequest tradeRequest);
+
+    Object queryAccountLog(TradePack tradePack);
 }

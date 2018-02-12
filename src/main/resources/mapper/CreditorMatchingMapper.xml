@@ -18,6 +18,16 @@
         <result column="AMOUNT" property="amount" jdbcType="DECIMAL"/>
         <result column="BTAMOUNT" property="btAmount" jdbcType="DECIMAL"/>
     </resultMap>
+    <resultMap id="AccountLogVo" type="redqueen.entity.CreditorMatching.AccountLogVo">
+        <result column="DES" property="description" jdbcType="VARCHAR"/>
+        <result column="OPERATORTYPE" property="operatorType" jdbcType="VARCHAR"/>
+        <result column="AL_WORKMONEY" property="alWorkMoney" jdbcType="DECIMAL"/>
+        <result column="TR_AMOUNT" property="trAmount" jdbcType="DECIMAL"/>
+        <result column="AL_USERID" property="alUserId" jdbcType="DECIMAL"/>
+        <result column="TR_USERID" property="trUserId" jdbcType="DECIMAL"/>
+        <result column="TP_USERID" property="tpUserId" jdbcType="DECIMAL"/>
+        <result column="PCODE" property="pCode" jdbcType="CHAR"/>
+    </resultMap>
 
     <select id="queryTradeRequest" resultMap="TradeRequestBVo">
         SELECT
@@ -49,5 +59,35 @@
           LEFT JOIN XXD_BORROW_TENDER xbt
             ON xtr.TENDERID = xbt.TENDERID
         WHERE xtp.REQUESTID = #{requestId,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryAccountLog" resultMap="AccountLogVo">
+        SELECT
+          CASE
+          WHEN a.OPERATORTYPE='trade_transfer_deduct' THEN '买方'
+          WHEN a.OPERATORTYPE='trade_transfer_increase' THEN '卖方'
+          END DES,
+          a.OPERATORTYPE,
+          a.WORKMONEY AL_WORKMONEY,
+          b.AMOUNT TR_AMOUNT,
+          a.USERID AL_USERID,
+          b.TR_USERID,
+          b.TP_USERID,
+          a.PCODE
+        from
+          (
+            SELECT USERID,PCODE,WORKMONEY,operatortype
+            FROM XXD_ACCOUNT_LOG
+            WHERE BUSIID = #{requestId,jdbcType=VARCHAR}
+          ) a
+          left join
+          (
+            SELECT xtr.AMOUNT,xtr.USERID TR_USERID, xtp.USERID TP_USERID,xtp.SCHEMEID
+            FROM XXD_TRADE_REQUEST xtr
+              LEFT JOIN XXD_TRADE_PACK xtp
+                ON xtr.REQUESTID = xtp.REQUESTID
+            WHERE xtr.REQUESTID = #{requestId,jdbcType=VARCHAR}
+          ) b
+            ON 1=1
     </select>
 </mapper>

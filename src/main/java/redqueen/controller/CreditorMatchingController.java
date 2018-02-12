@@ -86,4 +86,35 @@ public class CreditorMatchingController {
         return rspData;
     }
 
+    @TargetDataSource("stage")
+    @RequestMapping(value = "/stage/queryAccountLog", method = RequestMethod.POST)
+    public RspData queryAccountLogStage(@RequestBody ReqData reqData){
+        RspData rspData = new RspData();
+        try {
+            String json = JSONFormat.getObjectToJson(reqData.getData());
+            TradePack tradePack = JSONFormat.fromJson(json, TradePack.class);
+            rspData.setData(creditorMatchingService.queryAccountLog(tradePack));
+            rspData.setCode(Constants.CODE_SUCCESS);
+        }catch (Exception e){
+            rspData.setData(e.getMessage());
+            e.printStackTrace();
+        }
+        return rspData;
+    }
+
+    @TargetDataSource("test")
+    @RequestMapping(value = "/test/queryAccountLog", method = RequestMethod.POST)
+    public RspData queryAccountLogTest(@RequestBody ReqData reqData){
+        RspData rspData = new RspData();
+        try {
+            String json = JSONFormat.getObjectToJson(reqData.getData());
+            TradePack tradePack = JSONFormat.fromJson(json, TradePack.class);
+            rspData.setData(creditorMatchingService.queryAccountLog(tradePack));
+            rspData.setCode(Constants.CODE_SUCCESS);
+        }catch (Exception e){
+            rspData.setData(e.getMessage());
+            e.printStackTrace();
+        }
+        return rspData;
+    }
 }
