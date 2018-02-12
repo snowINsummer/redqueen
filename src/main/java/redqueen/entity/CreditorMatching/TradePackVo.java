@@ -1,4 +1,4 @@
-package redqueen.entity.CreditorTransfer;
+package redqueen.entity.CreditorMatching;
 
 public class TradePackVo {
 

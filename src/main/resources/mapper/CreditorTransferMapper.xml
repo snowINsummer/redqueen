@@ -43,10 +43,18 @@
     </select>
 
     <select id="queryTradeRequest" resultMap="TradeRequestResultMap">
-        SELECT xtr.REQUESTID,xtr.TENDERID,xtr.USERID,xu.MOBILE,xtr.ADDTIME,xtr.STATUS,AMOUNT from XXD_TRADE_REQUEST xtr
+        SELECT
+          xtr.REQUESTID,
+          xtr.TENDERID,
+          xtr.USERID,
+          xu.MOBILE,
+          xtr.ADDTIME,
+          xtr.STATUS,
+          xtr.AMOUNT
+        from XXD_TRADE_REQUEST xtr
         LEFT JOIN XXD_USER xu
         ON xtr.USERID = xu.USERID
-        WHERE TENDERID = #{tenderId,jdbcType=VARCHAR}
-        ORDER BY ADDTIME DESC
+        WHERE xtr.TENDERID = #{tenderId,jdbcType=VARCHAR}
+        ORDER BY xtr.ADDTIME DESC
     </select>
 </mapper>

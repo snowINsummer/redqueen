@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="redqueen.mapper.CreditorTransfer.CreditorMatchingMapper">
-    <resultMap id="TradePackVo" type="redqueen.entity.CreditorTransfer.TradePackVo">
+    <resultMap id="TradePackVo" type="redqueen.entity.CreditorMatching.TradePackVo">
         <result column="PACKID" property="packId" jdbcType="VARCHAR"/>
         <result column="REQUESTID" property="requestId" jdbcType="VARCHAR"/>
         <result column="ADDTIME" property="addTime" jdbcType="DATE"/>
@@ -10,6 +10,29 @@
         <result column="TENDERID" property="tenderId" jdbcType="VARCHAR"/>
         <result column="BORROWID" property="borrowId" jdbcType="VARCHAR"/>
     </resultMap>
+    <resultMap id="TradeRequestBVo" type="redqueen.entity.CreditorMatching.TradeRequestBVo">
+        <result column="REQUESTID" property="requestId" jdbcType="VARCHAR"/>
+        <result column="TENDERID" property="tenderId" jdbcType="VARCHAR"/>
+        <result column="ADDTIME" property="addTime" jdbcType="DATE"/>
+        <result column="STATUS" property="status" jdbcType="DECIMAL"/>
+        <result column="AMOUNT" property="amount" jdbcType="DECIMAL"/>
+        <result column="BTAMOUNT" property="btAmount" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <select id="queryTradeRequest" resultMap="TradeRequestBVo">
+        SELECT
+          xtr.REQUESTID,
+          xtr.TENDERID,
+          xtr.ADDTIME,
+          xtr.STATUS,
+          xtr.AMOUNT,
+          xbt.COLLECTAMOUNT-xbt.COLLECTINTEREST BTAMOUNT
+        from XXD_TRADE_REQUEST xtr
+          LEFT JOIN XXD_BORROW_TENDER xbt
+            ON xtr.TENDERID = xbt.TENDERID
+        WHERE xtr.TENDERID = #{tenderId,jdbcType=VARCHAR}
+        ORDER BY xtr.ADDTIME DESC
+    </select>
 
     <select id="queryTradePack" resultMap="TradePackVo">
         SELECT
