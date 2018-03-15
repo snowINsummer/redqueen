@@ -7,6 +7,7 @@ public class AccountLogVo {
     private String pCode;
     private BigDecimal alWorkmoney;
     private BigDecimal userWorkmoney;
+    private Long alUserId;
     private Long salerUserId;
     private Long curUserId;
     private String addTime;
@@ -33,6 +34,14 @@ public class AccountLogVo {
 
     public void setUserWorkmoney(BigDecimal userWorkmoney) {
         this.userWorkmoney = userWorkmoney;
+    }
+
+    public Long getAlUserId() {
+        return alUserId;
+    }
+
+    public void setAlUserId(Long alUserId) {
+        this.alUserId = alUserId;
     }
 
     public Long getSalerUserId() {

@@ -5,6 +5,7 @@
         <result column="PCODE" property="pCode" jdbcType="VARCHAR"/>
         <result column="AL_WORKMONEY" property="alWorkmoney" jdbcType="DECIMAL"/>
         <result column="USER_WORKMONEY" property="userWorkmoney" jdbcType="DECIMAL"/>
+        <result column="AL_USERID" property="alUserId" jdbcType="DECIMAL"/>
         <result column="SALER_USERID" property="salerUserId" jdbcType="DECIMAL"/>
         <result column="CURUSERID" property="curUserId" jdbcType="DECIMAL"/>
         <result column="ADDTIME" property="addTime" jdbcType="DATE"/>
@@ -15,7 +16,8 @@
           xal.PCODE,
           xal.WORKMONEY                      AL_WORKMONEY,
           xou.ACCOUNT + xou.EXPECTEDINTEREST USER_WORKMONEY,
-          xal.USERID                         SALER_USERID,
+          xal.USERID                         AL_USERID,
+          xu.USERID                          SALER_USERID,
           xbt.CURUSERID,
           xal.ADDTIME
         FROM XXD_ACCOUNT_LOG xal
