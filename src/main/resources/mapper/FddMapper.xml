@@ -30,7 +30,7 @@
         <result column="BORROWID" property="borrowId" jdbcType="VARCHAR"/>
         <result column="SCHEMEID" property="schemeId" jdbcType="VARCHAR"/>
         <result column="CURUSERID" property="curuserId" jdbcType="DECIMAL"/>
-        <result column="MOBILE" property="curuserMobile" jdbcType="VARCHAR"/>
+        <result column="LOGINID" property="curuserMobile" jdbcType="VARCHAR"/>
         <result column="EFFECTIVEMONEY" property="effectiveMoney" jdbcType="DECIMAL"/>
         <result column="ISOPTIMIZE" property="isOptimize" jdbcType="CHAR"/>
         <result column="STATUS" property="status" jdbcType="DECIMAL"/>
@@ -94,7 +94,7 @@
             xbt.BORROWID,
             xbt.SCHEMEID,
             xbt.CURUSERID,
-            xu.MOBILE,
+            xu.LOGINID,
             xbt.EFFECTIVEMONEY,
             xbt.ISOPTIMIZE,
             xbt.STATUS

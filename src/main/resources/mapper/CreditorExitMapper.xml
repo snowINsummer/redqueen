@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="redqueen.mapper.CreditorTransfer.CreditorExitMapper">
+    <resultMap id="AccountLogVo" type="redqueen.entity.CreditorExit.AccountLogVo">
+        <result column="PCODE" property="pCode" jdbcType="VARCHAR"/>
+        <result column="AL_WORKMONEY" property="alWorkmoney" jdbcType="DECIMAL"/>
+        <result column="USER_WORKMONEY" property="userWorkmoney" jdbcType="DECIMAL"/>
+        <result column="SALER_USERID" property="salerUserId" jdbcType="DECIMAL"/>
+        <result column="CURUSERID" property="curUserId" jdbcType="DECIMAL"/>
+        <result column="ADDTIME" property="addTime" jdbcType="DATE"/>
+    </resultMap>
+
+    <select id="queryAccountLog" resultMap="AccountLogVo">
+        SELECT
+          xal.PCODE,
+          xal.WORKMONEY                      AL_WORKMONEY,
+          xou.ACCOUNT + xou.EXPECTEDINTEREST USER_WORKMONEY,
+          xal.USERID                         SALER_USERID,
+          xbt.CURUSERID,
+          xal.ADDTIME
+        FROM XXD_ACCOUNT_LOG xal
+          LEFT JOIN XXD_USER xu
+            ON xu.USERID = xal.USERID
+          LEFT JOIN XXD_BORROW_TENDER xbt
+            ON 1 = 1
+          LEFT JOIN XXD_OPTIMIZE_USERSCHEME xou
+            ON xal.BUSIID = xou.SCHEMEID AND xal.USERID = xou.USERID
+        WHERE xal.BUSIID = #{schemeId,jdbcType=VARCHAR}
+              AND xal.OPERATORTYPE = 'xplan_quit_usable_inner_in'
+              AND xu.LOGINID = #{salerMobile,jdbcType=VARCHAR}
+              AND xbt.TENDERID = #{tenderId,jdbcType=VARCHAR}
+    </select>
+
+
+</mapper>

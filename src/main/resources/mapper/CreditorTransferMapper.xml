@@ -6,7 +6,7 @@
         <result column="BORROWID" property="borrowId" jdbcType="VARCHAR"/>
         <result column="SCHEMEID" property="schemeId" jdbcType="VARCHAR"/>
         <result column="CURUSERID" property="curuserId" jdbcType="DECIMAL"/>
-        <result column="MOBILE" property="curuserMobile" jdbcType="VARCHAR"/>
+        <result column="LOGINID" property="curuserMobile" jdbcType="VARCHAR"/>
         <result column="EFFECTIVEMONEY" property="effectiveMoney" jdbcType="DECIMAL"/>
         <result column="ISOPTIMIZE" property="isOptimize" jdbcType="CHAR"/>
         <result column="STATUS" property="status" jdbcType="DECIMAL"/>
@@ -15,7 +15,7 @@
         <result column="REQUESTID" property="requestId" jdbcType="VARCHAR"/>
         <result column="TENDERID" property="tenderId" jdbcType="VARCHAR"/>
         <result column="USERID" property="salerUserId" jdbcType="DECIMAL"/>
-        <result column="MOBILE" property="salerMobile" jdbcType="VARCHAR"/>
+        <result column="LOGINID" property="salerMobile" jdbcType="VARCHAR"/>
         <result column="ADDTIME" property="addTime" jdbcType="DATE"/>
         <result column="STATUS" property="status" jdbcType="DECIMAL"/>
         <result column="AMOUNT" property="amount" jdbcType="DECIMAL"/>
@@ -27,7 +27,15 @@
     <select id="queryCreditorRights" resultMap="CreditorRightsResultMap">
       SELECT * FROM
       (
-        SELECT xbt.TENDERID,xbt.BORROWID,xbt.SCHEMEID,xbt.CURUSERID,xu.MOBILE,xbt.EFFECTIVEMONEY,xbt.ISOPTIMIZE,xbt.STATUS FROM XXD_BORROW_TENDER xbt
+        SELECT xbt.TENDERID,
+          xbt.BORROWID,
+          xbt.SCHEMEID,
+          xbt.CURUSERID,
+          xu.LOGINID,
+          xbt.EFFECTIVEMONEY,
+          xbt.ISOPTIMIZE,
+          xbt.STATUS
+        FROM XXD_BORROW_TENDER xbt
         LEFT JOIN XXD_USER xu
           ON xu.USERID = xbt.CURUSERID
           WHERE xbt.STATUS = 1
@@ -47,7 +55,7 @@
           xtr.REQUESTID,
           xtr.TENDERID,
           xtr.USERID,
-          xu.MOBILE,
+          xu.LOGINID,
           xtr.ADDTIME,
           xtr.STATUS,
           xtr.AMOUNT
