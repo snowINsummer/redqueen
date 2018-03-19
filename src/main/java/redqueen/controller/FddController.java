@@ -25,7 +25,7 @@ public class FddController {
 
     @TargetDataSource("stage")
     @RequestMapping(value = "/stage/getSignatoryMessage", method = RequestMethod.POST)
-    public RspData getSignatoryMessage(@RequestBody ReqData reqData){
+    public RspData getSignatoryMessageStage(@RequestBody ReqData reqData){
         RspData rspData = new RspData();
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
@@ -41,7 +41,7 @@ public class FddController {
 
     @TargetDataSource("stage")
     @RequestMapping(value = "/stage/queryBorrowGuarantor", method = RequestMethod.POST)
-    public RspData queryBorrowGuarantor(@RequestBody ReqData reqData){
+    public RspData queryBorrowGuarantorStage(@RequestBody ReqData reqData){
         RspData rspData = new RspData();
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
@@ -57,7 +57,7 @@ public class FddController {
 
     @TargetDataSource("stage")
     @RequestMapping(value = "/stage/queryCorporatorMobile", method = RequestMethod.POST)
-    public RspData queryCorporatorMobile(@RequestBody ReqData reqData){
+    public RspData queryCorporatorMobileStage(@RequestBody ReqData reqData){
         RspData rspData = new RspData();
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
@@ -73,7 +73,71 @@ public class FddController {
 
     @TargetDataSource("stage")
     @RequestMapping(value = "/stage/queryCreditorInfo", method = RequestMethod.POST)
-    public RspData queryCreditorInfo(@RequestBody ReqData reqData){
+    public RspData queryCreditorInfoStage(@RequestBody ReqData reqData){
+        RspData rspData = new RspData();
+        try {
+            String json = JSONFormat.getObjectToJson(reqData.getData());
+            CreditorInfo creditorInfo = JSONFormat.fromJson(json, CreditorInfo.class);
+            rspData.setData(fddService.queryCreditorInfo(creditorInfo));
+            rspData.setCode(Constants.CODE_SUCCESS);
+        }catch (Exception e){
+            rspData.setData(e.getMessage());
+            e.printStackTrace();
+        }
+        return rspData;
+    }
+
+    @TargetDataSource("test")
+    @RequestMapping(value = "/test/getSignatoryMessage", method = RequestMethod.POST)
+    public RspData getSignatoryMessageTest(@RequestBody ReqData reqData){
+        RspData rspData = new RspData();
+        try {
+            String json = JSONFormat.getObjectToJson(reqData.getData());
+            FddMessage fddMessage = JSONFormat.fromJson(json, FddMessage.class);
+            rspData.setData(fddService.getSignatoryMessage(fddMessage));
+            rspData.setCode(Constants.CODE_SUCCESS);
+        }catch (Exception e){
+            rspData.setData(e.getMessage());
+            e.printStackTrace();
+        }
+        return rspData;
+    }
+
+    @TargetDataSource("test")
+    @RequestMapping(value = "/test/queryBorrowGuarantor", method = RequestMethod.POST)
+    public RspData queryBorrowGuarantorTest(@RequestBody ReqData reqData){
+        RspData rspData = new RspData();
+        try {
+            String json = JSONFormat.getObjectToJson(reqData.getData());
+            RcBorrowGuarantor rcBorrowGuarantor = JSONFormat.fromJson(json, RcBorrowGuarantor.class);
+            rspData.setData(fddService.queryBorrowGuarantor(rcBorrowGuarantor));
+            rspData.setCode(Constants.CODE_SUCCESS);
+        }catch (Exception e){
+            rspData.setData(e.getMessage());
+            e.printStackTrace();
+        }
+        return rspData;
+    }
+
+    @TargetDataSource("test")
+    @RequestMapping(value = "/test/queryCorporatorMobile", method = RequestMethod.POST)
+    public RspData queryCorporatorMobileTest(@RequestBody ReqData reqData){
+        RspData rspData = new RspData();
+        try {
+            String json = JSONFormat.getObjectToJson(reqData.getData());
+            CorporatorMobile corporatorMobile = JSONFormat.fromJson(json, CorporatorMobile.class);
+            rspData.setData(fddService.queryCorporatorMobile(corporatorMobile));
+            rspData.setCode(Constants.CODE_SUCCESS);
+        }catch (Exception e){
+            rspData.setData(e.getMessage());
+            e.printStackTrace();
+        }
+        return rspData;
+    }
+
+    @TargetDataSource("test")
+    @RequestMapping(value = "/test/queryCreditorInfo", method = RequestMethod.POST)
+    public RspData queryCreditorInfoTest(@RequestBody ReqData reqData){
         RspData rspData = new RspData();
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
