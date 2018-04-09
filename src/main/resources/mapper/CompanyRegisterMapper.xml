@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="redqueen.mapper.CompanyRegister.CompanyRegisterMapper">
+    <resultMap id="ApproInfoCenterVo" type="redqueen.entity.CompanyRegister.ApproInfoCenterVo">
+        <result column="USERID" property="userId" jdbcType="DECIMAL"/>
+        <result column="REALNAME" property="realName" jdbcType="DECIMAL"/>
+        <result column="MOBILE" property="mobile" jdbcType="DECIMAL"/>
+        <result column="COMPANY" property="company" jdbcType="DECIMAL"/>
+        <result column="BANK" property="bank" jdbcType="DECIMAL"/>
+        <result column="CREATEDATE" property="createDate" jdbcType="DATE"/>
+    </resultMap>
+
+    <select id="queryApproInfoCenter" resultMap="ApproInfoCenterVo">
+        SELECT
+          xuic.USERID,
+          xuic.REALNAME,
+          xuic.MOBILE,
+          xuic.OTHERAPPRO1 COMPANY,
+          xuic.OTHERAPPRO2 BANK,
+          xuic.CREATEDATE
+        FROM XXD_USER_INFOAPPRO_CENTER xuic
+          LEFT JOIN XXD_USER xu ON xuic.USERID=xu.USERID
+        WHERE xu.USERNAME = #{mobile,jdbcType=VARCHAR}
+          OR xu.MOBILE = #{mobile,jdbcType=VARCHAR}
+          OR xu.LOGINID = #{mobile,jdbcType=VARCHAR}
+    </select>
+
+
+</mapper>
