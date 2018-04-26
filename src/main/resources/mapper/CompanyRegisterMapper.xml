@@ -9,7 +9,16 @@
         <result column="BANK" property="bank" jdbcType="DECIMAL"/>
         <result column="CREATEDATE" property="createDate" jdbcType="DATE"/>
     </resultMap>
-
+    <resultMap id="FkComtomerInfoVo" type="redqueen.entity.CompanyRegister.FkComtomerInfoVo">
+        <result column="ID" property="id" jdbcType="DECIMAL"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="ID_NUMBER" property="idNumber" jdbcType="VARCHAR"/>
+        <result column="LOAN_AMOUNT" property="loanAmount" jdbcType="DECIMAL"/>
+        <result column="BORROW_ID" property="borrowId" jdbcType="VARCHAR"/>
+        <result column="BORROW_TITLE" property="borrowTitle" jdbcType="VARCHAR"/>
+        <result column="LOAN_USE" property="loanUse" jdbcType="VARCHAR"/>
+        <result column="APPLYTIME" property="applyTime" jdbcType="DATE"/>
+    </resultMap>
     <select id="queryApproInfoCenter" resultMap="ApproInfoCenterVo">
         SELECT
           xuic.USERID,
@@ -25,5 +34,29 @@
           OR xu.LOGINID = #{mobile,jdbcType=VARCHAR}
     </select>
 
+    <select id="queryFkComtomerInfo" resultMap="FkComtomerInfoVo">
+        SELECT
+          ci.ID,
+          ci.NAME,
+          ci.ID_NUMBER,
+          vca.LOAN_AMOUNT,
+          vca.BORROW_ID,
+          vca.BORROW_TITLE,
+          vca.LOAN_USE,
+          vca.APPLYTIME
+        FROM CUSTOMER_INFO ci
+        LEFT JOIN V6CUSTOMERAPPLY vca
+          ON ci.ID=vca.CUSTOMER_ID
+        <if test="userName != null and userName != '' and borrowId != null and borrowId != ''">
+            WHERE ci.XXDUSERNAME = #{userName,jdbcType=VARCHAR}
+              OR vca.BORROW_ID = #{borrowId,jdbcType=VARCHAR}
+        </if>
+        <if test="(userName == null or userName == '') and borrowId != null and borrowId != ''">
+            WHERE vca.BORROW_ID = #{borrowId,jdbcType=VARCHAR}
+        </if>
+        <if test="userName != null and userName != '' and (borrowId == null or borrowId == '')">
+            WHERE ci.XXDUSERNAME = #{userName,jdbcType=VARCHAR}
+        </if>
+    </select>
 
 </mapper>

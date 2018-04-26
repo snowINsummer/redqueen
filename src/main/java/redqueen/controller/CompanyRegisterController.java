@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import qa.utils.JSONFormat;
 import redqueen.body.CompanyRegister.ApproInfoCenter;
+import redqueen.body.CompanyRegister.FkComtomerInfo;
 import redqueen.body.CreditorExit.CreditorExit;
 import redqueen.common.configuration.TargetDataSource;
 import redqueen.common.constants.Constants;
@@ -20,7 +21,6 @@ public class CompanyRegisterController {
 
     @Autowired
     private CompanyRegisterService companyRegisterService;
-
 
     @TargetDataSource("stage")
     @RequestMapping(value = "/stage/queryApproInfoCenter", method = RequestMethod.POST)
@@ -54,6 +54,37 @@ public class CompanyRegisterController {
         return rspData;
     }
 
+    @TargetDataSource("stage")
+    @RequestMapping(value = "/stage/queryFkComtomerInfo", method = RequestMethod.POST)
+    public RspData queryFkComtomerInfoStage(@RequestBody ReqData reqData){
+        RspData rspData = new RspData();
+        try {
+            String json = JSONFormat.getObjectToJson(reqData.getData());
+            FkComtomerInfo fkComtomerInfo = JSONFormat.fromJson(json, FkComtomerInfo.class);
+            rspData.setData(companyRegisterService.queryFkComtomerInfo(fkComtomerInfo));
+            rspData.setCode(Constants.CODE_SUCCESS);
+        }catch (Exception e){
+            rspData.setData(e.getMessage());
+            e.printStackTrace();
+        }
+        return rspData;
+    }
+
+    @TargetDataSource("test")
+    @RequestMapping(value = "/test/queryFkComtomerInfo", method = RequestMethod.POST)
+    public RspData queryFkComtomerInfoTest(@RequestBody ReqData reqData){
+        RspData rspData = new RspData();
+        try {
+            String json = JSONFormat.getObjectToJson(reqData.getData());
+            FkComtomerInfo fkComtomerInfo = JSONFormat.fromJson(json, FkComtomerInfo.class);
+            rspData.setData(companyRegisterService.queryFkComtomerInfo(fkComtomerInfo));
+            rspData.setCode(Constants.CODE_SUCCESS);
+        }catch (Exception e){
+            rspData.setData(e.getMessage());
+            e.printStackTrace();
+        }
+        return rspData;
+    }
 
 
 }
