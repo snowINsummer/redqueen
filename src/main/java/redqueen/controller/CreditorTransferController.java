@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import qa.utils.JSONFormat;
+import qa.utils.ValidationUtil;
 import redqueen.body.CreditorTransfer.BorrowTender;
 import redqueen.body.CreditorTransfer.TradeRequest;
 import redqueen.common.configuration.TargetDataSource;
@@ -60,6 +61,7 @@ public class CreditorTransferController {
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
             TradeRequest tradeRequest = JSONFormat.fromJson(json, TradeRequest.class);
+            ValidationUtil.validate(tradeRequest);
             rspData.setData(creditorTransferService.queryTradeRequest(tradeRequest));
             rspData.setCode(Constants.CODE_SUCCESS);
         }catch (Exception e){
@@ -76,6 +78,7 @@ public class CreditorTransferController {
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
             TradeRequest tradeRequest = JSONFormat.fromJson(json, TradeRequest.class);
+            ValidationUtil.validate(tradeRequest);
             rspData.setData(creditorTransferService.queryTradeRequest(tradeRequest));
             rspData.setCode(Constants.CODE_SUCCESS);
         }catch (Exception e){

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import qa.utils.JSONFormat;
+import qa.utils.ValidationUtil;
 import redqueen.body.fdd.CorporatorMobile;
 import redqueen.body.fdd.CreditorInfo;
 import redqueen.body.fdd.FddMessage;
@@ -30,6 +31,7 @@ public class FddController {
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
             FddMessage fddMessage = JSONFormat.fromJson(json, FddMessage.class);
+            ValidationUtil.validate(fddMessage);
             rspData.setData(fddService.getSignatoryMessage(fddMessage));
             rspData.setCode(Constants.CODE_SUCCESS);
         }catch (Exception e){
@@ -46,6 +48,7 @@ public class FddController {
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
             RcBorrowGuarantor rcBorrowGuarantor = JSONFormat.fromJson(json, RcBorrowGuarantor.class);
+            ValidationUtil.validate(rcBorrowGuarantor);
             rspData.setData(fddService.queryBorrowGuarantor(rcBorrowGuarantor));
             rspData.setCode(Constants.CODE_SUCCESS);
         }catch (Exception e){
@@ -62,6 +65,7 @@ public class FddController {
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
             CorporatorMobile corporatorMobile = JSONFormat.fromJson(json, CorporatorMobile.class);
+            ValidationUtil.validate(corporatorMobile);
             rspData.setData(fddService.queryCorporatorMobile(corporatorMobile));
             rspData.setCode(Constants.CODE_SUCCESS);
         }catch (Exception e){
@@ -78,6 +82,7 @@ public class FddController {
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
             CreditorInfo creditorInfo = JSONFormat.fromJson(json, CreditorInfo.class);
+            ValidationUtil.validate(creditorInfo);
             rspData.setData(fddService.queryCreditorInfo(creditorInfo));
             rspData.setCode(Constants.CODE_SUCCESS);
         }catch (Exception e){
@@ -94,6 +99,7 @@ public class FddController {
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
             FddMessage fddMessage = JSONFormat.fromJson(json, FddMessage.class);
+            ValidationUtil.validate(fddMessage);
             rspData.setData(fddService.getSignatoryMessage(fddMessage));
             rspData.setCode(Constants.CODE_SUCCESS);
         }catch (Exception e){
@@ -110,6 +116,7 @@ public class FddController {
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
             RcBorrowGuarantor rcBorrowGuarantor = JSONFormat.fromJson(json, RcBorrowGuarantor.class);
+            ValidationUtil.validate(rcBorrowGuarantor);
             rspData.setData(fddService.queryBorrowGuarantor(rcBorrowGuarantor));
             rspData.setCode(Constants.CODE_SUCCESS);
         }catch (Exception e){
@@ -126,6 +133,7 @@ public class FddController {
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
             CorporatorMobile corporatorMobile = JSONFormat.fromJson(json, CorporatorMobile.class);
+            ValidationUtil.validate(corporatorMobile);
             rspData.setData(fddService.queryCorporatorMobile(corporatorMobile));
             rspData.setCode(Constants.CODE_SUCCESS);
         }catch (Exception e){
@@ -142,6 +150,7 @@ public class FddController {
         try {
             String json = JSONFormat.getObjectToJson(reqData.getData());
             CreditorInfo creditorInfo = JSONFormat.fromJson(json, CreditorInfo.class);
+            ValidationUtil.validate(creditorInfo);
             rspData.setData(fddService.queryCreditorInfo(creditorInfo));
             rspData.setCode(Constants.CODE_SUCCESS);
         }catch (Exception e){
